@@ -1,7 +1,7 @@
 # Fawn — HackTheBox Writeup
 **Difficulty:** Easy
-**OS:** Linux (Unix)
-**Date:** DD/MM/YYYY
+**OS:** Linux
+**Date:** 17/07/2026
 **Status:** Pwned ✓
 ---
 ## Summary
@@ -17,7 +17,7 @@ nmap -sV -p 21 10.129.207.250
 * Host OS: Unix
 ---
 ## Enumeration
-FTP can be configured to allow **anonymous login** — a legitimate feature meant for public file shares, but a vulnerability when left enabled on a server that shouldn't be publicly accessible. With only port 21 open, anonymous login was the obvious next thing to try.
+FTP can be configured to allow anonymous login — a legitimate feature meant for public file shares, but a vulnerability when left enabled on a server that shouldn't be publicly accessible. With only port 21 open, anonymous login was the obvious next thing to try.
 ---
 ## Exploitation
 Connected via FTP and logged in as `anonymous` with a blank password.
@@ -40,10 +40,8 @@ Not applicable — anonymous FTP access directly exposed the flag file, so no fu
 ```bash
 ftp> ls
 # -rw-r--r--  1 0  0  32 Jun 17 15:23 flag.txt
-
 ftp> get flag.txt
 ftp> quit
-
 cat flag.txt
 ```
 Copied the 32-character hex string and submitted it on the HTB Starting Point page.
